@@ -46,7 +46,7 @@ For local development or heavy usage, please add your own token in a `.env` file
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
+- Node.js (v22 or higher recommended)
 
 ### Installation
 
@@ -58,7 +58,8 @@ git clone https://github.com/Joseph-box/movies-explorer.git
 cd movies-explorer
 
 # Install dependencies
-npm install
+npm install --legacy-peer-deps
+# legacy peer deps is required for the infinite scroll package as it is still pending a fix.
 
 # Start the development server
 npm run dev
