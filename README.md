@@ -36,6 +36,14 @@ This project was created to showcase modern React development practices, clean a
 
 ## 🚀 Getting Started
 
+## API Configuration
+
+This app requires a TMDB Read Access Token.
+
+For easy demo purposes, a **public fallback token** is included so the app works immediately on StackBlitz and deployed previews.
+
+For local development or heavy usage, please add your own token in a `.env` file:
+
 ### Prerequisites
 
 - Node.js (v18 or higher recommended)
