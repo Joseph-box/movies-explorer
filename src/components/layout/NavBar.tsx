@@ -1,8 +1,7 @@
 import { Box, Heading, HStack } from "@chakra-ui/react";
 import { Link } from "react-router";
-import SidebarDrawer from "./SidebarDrawer";
 import app_title from "@/constants/appTitle";
-import Sidebar from "./Sidebar";
+import SidebarDrawer from "./SidebarDrawer";
 
 const NavBar = () => {
   return (
@@ -17,10 +16,8 @@ const NavBar = () => {
       borderBottom="1px solid"
       borderColor="gray.700"
     >
-      <Box display={{ base: "block", lg: "none" }}>
-        <SidebarDrawer>
-          <Sidebar />
-        </SidebarDrawer>
+      <Box>
+        <SidebarDrawer />
       </Box>
 
       <Box gap={6}>
