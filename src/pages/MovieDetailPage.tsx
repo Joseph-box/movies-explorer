@@ -8,7 +8,6 @@ import {
   GridItem,
   Separator,
 } from "@chakra-ui/react";
-import ExpandableText from "@/components/movie-detail-page/ExpandableText";
 import { useMovie } from "@/hooks/useMovie";
 import { useParams } from "react-router";
 import MovieDetailSkeleton from "@/components/movie-detail-page/MovieDetailsSkeleton";
@@ -24,6 +23,7 @@ import MovieOriginCountries from "@/components/movie-detail-page/MovieOriginCoun
 import MovieProductionCompanies from "@/components/movie-detail-page/MovieProductionCompanies";
 import MovieHomePage from "@/components/movie-detail-page/MovieHomePage";
 import MovieBackdrop from "@/components/movie-detail-page/MovieBackdrop";
+import MovieOverview from "@/components/movie-detail-page/MovieOverview";
 
 const MovieDetailPage = () => {
   const { movie_id } = useParams();
@@ -51,7 +51,7 @@ const MovieDetailPage = () => {
           <GridItem colSpan={{ base: 1, lg: 3 }}>
             <VStack align="stretch" gap={6}>
               <MovieHeading movie={movie} />
-              <ExpandableText>{movie.overview}</ExpandableText>
+              <MovieOverview overview={movie.overview} />
 
               <Separator borderColor="gray.700" />
 
