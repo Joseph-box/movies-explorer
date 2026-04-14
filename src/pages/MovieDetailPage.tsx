@@ -24,6 +24,8 @@ import MovieProductionCompanies from "@/components/movie-detail-page/MovieProduc
 import MovieHomePage from "@/components/movie-detail-page/MovieHomePage";
 import MovieBackdrop from "@/components/movie-detail-page/MovieBackdrop";
 import MovieOverview from "@/components/movie-detail-page/MovieOverview";
+import MovieBudget from "@/components/movie-detail-page/MovieBudget";
+import MovieRevenue from "@/components/movie-detail-page/MovieRevenue";
 
 const MovieDetailPage = () => {
   const { movie_id } = useParams();
@@ -60,6 +62,8 @@ const MovieDetailPage = () => {
                 <MovieReleaseDate movie={movie} />
                 <MovieRuntime movie={movie} />
                 <MovieStatus movie={movie} />
+                <MovieBudget movie={movie} />
+                <MovieRevenue movie={movie} />
               </SimpleGrid>
 
               {/* Additional Info */}
