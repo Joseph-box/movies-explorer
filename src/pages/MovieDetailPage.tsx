@@ -1,8 +1,12 @@
 import { Text } from "@chakra-ui/react";
 import { useMovie } from "@/hooks/useMovie";
 import { useParams } from "react-router";
+import { lazy, Suspense } from "react";
 import MovieDetailSkeleton from "@/components/movie-detail-page/MovieDetailsSkeleton";
-import MovieDetailsContent from "@/components/movie-detail-page/MovieDetailsContent";
+
+const MovieDetailsContent = lazy(
+  () => import("@/components/movie-detail-page/MovieDetailsContent"),
+);
 
 const MovieDetailPage = () => {
   const { movie_id } = useParams();
@@ -13,7 +17,11 @@ const MovieDetailPage = () => {
   if (error || !movie)
     return <Text color="red.400">Failed to load movie details</Text>;
 
-  return <MovieDetailsContent movie={movie} />;
+  return (
+    <Suspense fallback={<MovieDetailSkeleton />}>
+      <MovieDetailsContent movie={movie} />
+    </Suspense>
+  );
 };
 
 export default MovieDetailPage;
