@@ -1,23 +1,22 @@
 import type { MovieDetail } from "@/entities/Movie";
 import { Box, Link } from "@chakra-ui/react";
-import { Activity } from "react";
 
 const MovieHomePage = ({ movie }: { movie: MovieDetail }) => {
+  if (!movie.homepage) return null;
+
   return (
-    <Activity mode={movie.homepage ? "visible" : "hidden"}>
-      <Box>
-        <Link
-          href={movie.homepage}
-          target="_blank"
-          rel="noopener noreferrer"
-          color="purple.400"
-          fontWeight="medium"
-          _hover={{ textDecoration: "underline" }}
-        >
-          Visit Official Homepage →
-        </Link>
-      </Box>
-    </Activity>
+    <Box>
+      <Link
+        href={movie.homepage}
+        target="_blank"
+        rel="noopener noreferrer"
+        color="purple.400"
+        fontWeight="medium"
+        _hover={{ textDecoration: "underline" }}
+      >
+        Visit Official Homepage →
+      </Link>
+    </Box>
   );
 };
 

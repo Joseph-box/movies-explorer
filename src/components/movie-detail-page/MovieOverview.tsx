@@ -1,6 +1,6 @@
 import { Button, Collapsible, Text } from "@chakra-ui/react";
 import { LuChevronDown } from "react-icons/lu";
-import { Activity, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const COLLAPSED_HEIGHT = 85;
 
@@ -26,40 +26,40 @@ const MovieOverview = ({ overview }: { overview: string }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [overview]);
 
-  return (
-    <Activity mode={overview ? "visible" : "hidden"}>
-      <Collapsible.Root collapsedHeight={`${COLLAPSED_HEIGHT}px`}>
-        <Collapsible.Content
-          ref={contentRef}
-          _closed={
-            isOverflowing
-              ? {
-                  shadow: "inset 0 -12px 12px -12px var(--shadow-color)",
-                  shadowColor: "blackAlpha.500",
-                }
-              : {}
-          }
-        >
-          <Text>{overview}</Text>
-        </Collapsible.Content>
+  if (!overview) return null;
 
-        <Activity mode={isOverflowing ? "visible" : "hidden"}>
-          <Collapsible.Trigger asChild mt="4">
-            <Button size="sm">
-              <Collapsible.Context>
-                {(api) => (api.open ? "Read Less" : "Read More")}
-              </Collapsible.Context>
-              <Collapsible.Indicator
-                transition="transform 0.2s"
-                _open={{ transform: "rotate(180deg)" }}
-              >
-                <LuChevronDown />
-              </Collapsible.Indicator>
-            </Button>
-          </Collapsible.Trigger>
-        </Activity>
-      </Collapsible.Root>
-    </Activity>
+  return (
+    <Collapsible.Root collapsedHeight={`${COLLAPSED_HEIGHT}px`}>
+      <Collapsible.Content
+        ref={contentRef}
+        _closed={
+          isOverflowing
+            ? {
+                shadow: "inset 0 -12px 12px -12px var(--shadow-color)",
+                shadowColor: "blackAlpha.500",
+              }
+            : {}
+        }
+      >
+        <Text>{overview}</Text>
+      </Collapsible.Content>
+
+      {isOverflowing && (
+        <Collapsible.Trigger asChild mt="4">
+          <Button size="sm">
+            <Collapsible.Context>
+              {(api) => (api.open ? "Read Less" : "Read More")}
+            </Collapsible.Context>
+            <Collapsible.Indicator
+              transition="transform 0.2s"
+              _open={{ transform: "rotate(180deg)" }}
+            >
+              <LuChevronDown />
+            </Collapsible.Indicator>
+          </Button>
+        </Collapsible.Trigger>
+      )}
+    </Collapsible.Root>
   );
 };
 

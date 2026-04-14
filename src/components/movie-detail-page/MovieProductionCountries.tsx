@@ -1,25 +1,19 @@
 import type { MovieDetail } from "@/entities/Movie";
 import { PiFilmSlateLight } from "react-icons/pi";
 import MovieStat from "./MovieStat";
-import { Activity } from "react";
 
 const MovieProductionCountries = ({ movie }: { movie: MovieDetail }) => {
+  if (!movie.production_countries || movie.production_countries.length === 0)
+    return null;
+
   return (
-    <Activity
-      mode={
-        movie.production_countries && movie.production_countries.length > 0
-          ? "visible"
-          : "hidden"
-      }
-    >
-      <MovieStat
-        icon={<PiFilmSlateLight />}
-        label={"Production Countries"}
-        value={movie.production_countries
-          .map((country) => country.name)
-          .join(", ")}
-      />
-    </Activity>
+    <MovieStat
+      icon={<PiFilmSlateLight />}
+      label={"Production Countries"}
+      value={movie.production_countries
+        .map((country) => country.name)
+        .join(", ")}
+    />
   );
 };
 

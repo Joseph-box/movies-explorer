@@ -1,5 +1,5 @@
 import { HStack, Text, Stat, type StatRootProps } from "@chakra-ui/react";
-import { Activity, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 const MovieStat = ({
   icon,
@@ -22,9 +22,7 @@ const MovieStat = ({
           <Text>{label}</Text>
         </HStack>
       </Stat.Label>
-      <Activity mode={value ? "visible" : "hidden"}>
-        <Stat.ValueText fontSize={"sm"}>{value}</Stat.ValueText>
-      </Activity>
+      {value && <Stat.ValueText fontSize={"sm"}>{value}</Stat.ValueText>}
       {element}
     </Stat.Root>
   );
